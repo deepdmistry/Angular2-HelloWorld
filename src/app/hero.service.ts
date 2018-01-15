@@ -7,19 +7,32 @@ import {Hero} from "./hero";
 
 @Injectable()
 export class HeroService {
-  private heroesUrl = 'api/heroes';  // URL to web api
+  
+  private hostName = "localHost:8080";
+  private heroesUrl = 'http://' + this.hostName + '/heroes';  // URL to web api
   constructor(private http: Http) {
   }
 
   getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl)
+    const url = `${this.heroesUrl}/getHeroes`;
+    return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Hero[])
+      .then(response => {
+        return response.json() as Hero[]
+      })
       .catch(this.handleError);
   }
 
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data as Hero)
+      .catch(this.handleError);
+  }
+  
+  getHeroByName(name: string): Promise<Hero> {
+    const url = `${this.heroesUrl}/get/${name}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json().data as Hero)
