@@ -28,6 +28,8 @@
   position: relative;
   display: block;
   width: 250px;
+  padding-left: 20px;
+  padding-top: 5px;
 }
 
 .heroes a:hover {
@@ -68,7 +70,7 @@ button:hover {
 button.delete {
   position: relative;
   left: 194px;
-  top: -32px;
+  top: -21px;
   background-color: gray !important;
   color: white;
 }
