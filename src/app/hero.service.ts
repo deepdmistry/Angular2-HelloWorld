@@ -41,7 +41,7 @@ export class HeroService {
   
   /** GET hero by id. Will 404 if id not found */
   getHero(id: string): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.heroesUrl}/hero/${id}`;
     return this.http.get<Hero>(url).pipe(tap(_ => this.log(`fetched hero id=${id}`)), catchError(this.handleError<Hero>(`getHero id=${id}`)));
   }
   
@@ -51,7 +51,7 @@ export class HeroService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Hero[]>(`api/heroes/?name=${term}`).pipe(tap(_ => this.log(`found heroes matching "${term}"`)), catchError(this.handleError<Hero[]>('searchHeroes', [])));
+    return this.http.get<Hero[]>(`${this.heroesUrl}/search/${term}`).pipe(tap(_ => this.log(`found heroes matching "${term}"`)), catchError(this.handleError<Hero[]>('searchHeroes', [])));
   }
   
   //////// Save methods //////////
