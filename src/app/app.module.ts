@@ -13,6 +13,7 @@ import {HeroSearchComponent} from './hero-search/hero-search.component';
 import {HeroService} from './hero.service';
 import {MessageService} from './message.service';
 import {MessagesComponent} from './messages/messages.component';
+import {MapsComponent} from './maps/maps.component';
 
 @NgModule({
   imports: [
@@ -22,8 +23,7 @@ import {MessagesComponent} from './messages/messages.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent, HeroDetailComponent, MessagesComponent,
-    HeroSearchComponent
+    HeroesComponent, HeroDetailComponent, MessagesComponent, HeroSearchComponent, MapsComponent
   ], providers: [HeroService, MessageService], bootstrap: [AppComponent]
 })
 export class AppModule {
